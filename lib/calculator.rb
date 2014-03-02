@@ -1,7 +1,13 @@
 class Calculator
 
   def add(str)
-    nums = str.split(/[\n,]/).collect do |nstr|
+    delimiter = ","
+    if str =~ /^\/\/(.)\n(.*)/
+      delimiter = $1
+      str = $2
+    end
+
+    nums = str.split(/[\n#{delimiter}]/).collect do |nstr|
       Integer(nstr)
     end
 

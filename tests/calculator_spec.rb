@@ -42,4 +42,10 @@ describe 'Calculator' do
     calculator.add("1\n2,3").should eq(6)
   end
 
+  it 'should allow changing the delimiter' do
+    calculator = Calculator.new
+
+    calculator.add("//;\n1;2;4").should eq(7)
+  end
+
 end
