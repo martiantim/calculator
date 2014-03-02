@@ -24,12 +24,6 @@ describe 'Calculator' do
     calculator.add("2,3").should eq(5)
   end
 
-  it 'should handle negative numbers' do
-    calculator = Calculator.new
-
-    calculator.add("-2,3").should eq(1)
-  end
-
   it 'should handle more than 2 numbers' do
     calculator = Calculator.new
 
@@ -46,6 +40,18 @@ describe 'Calculator' do
     calculator = Calculator.new
 
     calculator.add("//;\n1;2;4").should eq(7)
+  end
+
+  it 'should throw exception with if there is a negative number' do
+    calculator = Calculator.new
+
+    expect { calculator.add("2,-1,3") }.to raise_error(ArgumentError)
+  end
+
+  it 'should throw exception with if there is a negative number with negative numbers' do
+    calculator = Calculator.new
+
+    expect { calculator.add("2,-1,3, -5") }.to raise_error(ArgumentError, "negatives not allowed: -1,-5")
   end
 
 end

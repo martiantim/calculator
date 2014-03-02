@@ -11,6 +11,9 @@ class Calculator
       Integer(nstr)
     end
 
+    negatives = nums.find_all { |num| num < 0 }
+    raise ArgumentError, "negatives not allowed: #{negatives.join(',')}" if negatives.length > 0
+
     nums.inject(0) { |sum, num| sum + num }
   end
 
