@@ -30,9 +30,9 @@ describe 'Calculator' do
     calculator.add("-2,3").should eq(1)
   end
 
-  it 'should raise exception if more than 2 numbers' do
+  it 'should handle more than 2 numbers' do
     calculator = Calculator.new
 
-    expect { calculator.add("1,2,3") }.to raise_error(ArgumentError)
+    calculator.add("1,2,3,4,5").should eq(15)
   end
 end
